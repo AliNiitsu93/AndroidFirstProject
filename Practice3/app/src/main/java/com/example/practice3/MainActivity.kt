@@ -4,15 +4,18 @@ import android.content.pm.PackageManager
 import android.hardware.Camera
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.SparseArray
 import android.view.SurfaceHolder
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.util.isNotEmpty
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
+import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.jar.Manifest
+import android.Manifest
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         if(ContextCompat.checkSelfPermission(
                 this@MainActivity,
-                android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             askForCameraPermission() }
 
         else{
@@ -37,11 +40,12 @@ class MainActivity : AppCompatActivity() {
         detector = BarcodeDetector.Builder(this@MainActivity).build()
         cameraSource = CameraSource.Builder(this@MainActivity, detector).setAutoFocusEnabled(true).build()
         cameraSurfaceView.holder.addCallback(surgaceCallBack)
+        detector.setProcessor(processor)
     }
 
     private fun askForCameraPermission(){
         ActivityCompat.requestPermissions(this@MainActivity,
-            arrayOf(android.Manifest.permission.CAMERA),requestCodeCameraPermission)
+            arrayOf(Manifest.permission.CAMERA),requestCodeCameraPermission)
     }
 
     override fun onRequestPermissionsResult(
@@ -80,11 +84,20 @@ class MainActivity : AppCompatActivity() {
     }
     private val processor = object : Detector.Processor<Barcode>{
         override fun release() {
-            TODO("Not yet implemented")
+
         }
 
-        override fun receiveDetections(p0: Detector.Detections<Barcode>?) {
-            TODO("Not yet implemented")
+        override fun receiveDetections(detections: Detector.Detections<Barcode>?) {
+            if(detections != null && detections.detectedItems.isNotEmpty()){
+                val qrCodes: SparseArray<Barcode> = detections.detectedItems
+                val code = qrCodes.valueAt(0)
+                textScanResult.text = code.displayValue
+                println("__________________________"+code.displayValue.toString())
+                //SUCCESS. collected barcode as a String
+            }
+            else{
+                textScanResult.text = ""
+            }
         }
     }
 }
