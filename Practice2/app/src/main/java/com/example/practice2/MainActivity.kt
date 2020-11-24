@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         var db = helper.readableDatabase
         var rs = db.rawQuery("SELECT * FROM USERS",null)
 
-        if (rs.moveToNext())
-            Toast.makeText(applicationContext,rs.getString(1),Toast.LENGTH_LONG).show()
+       // if (rs.moveToNext())
+         //   Toast.makeText(applicationContext,rs.getString(1),Toast.LENGTH_LONG).show()
 
         button.setOnClickListener {
             var cv = ContentValues()
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             cv.put("PWD",addPassword.text.toString())
 
             db.insert("USERS", null, cv)
-
+            Toast.makeText(applicationContext, addEmail.text.toString().plus(" Safely Added"), Toast.LENGTH_SHORT).show()
             addEmail.setText("")
             addPassword.setText("")
             addEmail.requestFocus()

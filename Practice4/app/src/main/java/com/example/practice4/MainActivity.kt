@@ -10,11 +10,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+
         btnStartShopping.setOnClickListener {
             val intent = Intent(this, ShoppingCart::class.java)
             //start the next activity
             startActivity(intent)
         }
 
+        btnSaveProduct.setOnClickListener {
+            val intent = Intent(this, AddProduct::class.java)
+            startActivity(intent)
+        }
+
     }
 }
+
+
+//DATABASE IS NOT BEING CREATED Currently.
