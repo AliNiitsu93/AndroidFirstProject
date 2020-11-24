@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c6f80d7-22fa-4da6-b8d4-2060a02cbf70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Practice3/.idea/render.experimental.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practice4/app/src/main/java/com/example/practice4/ShoppingCart.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Practice3/app/src/main/java/com/example/practice3/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice3/app/src/main/java/com/example/practice3/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Practice3/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice3/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/practice2/MyDBHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/practice2/MyDBHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice3/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice3/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,5 +133,11 @@
       <updated>1604458694842</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="260" y="-839" key="search.everywhere.popup" timestamp="1606185178822">
+      <screen x="-365" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="260" y="-839" key="search.everywhere.popup/-365.-1080.1920.1080/0.0.1280.800@-365.-1080.1920.1080" timestamp="1606185178822" />
   </component>
 </project>
