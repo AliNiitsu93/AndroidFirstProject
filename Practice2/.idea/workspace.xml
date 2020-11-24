@@ -10,7 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c6f80d7-22fa-4da6-b8d4-2060a02cbf70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Practice4/app/src/main/java/com/example/practice4/BarcodeScan.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practice4/app/src/main/res/layout/activity_barcode_scan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice4/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice4/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice4/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice4/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice4/app/src/main/java/com/example/practice4/ShoppingCart.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice4/app/src/main/java/com/example/practice4/ShoppingCart.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice4/app/src/main/res/layout/activity_shopping_cart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice4/app/src/main/res/layout/activity_shopping_cart.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice4/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practice4/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
