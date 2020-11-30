@@ -21,7 +21,7 @@ a. Test whether Android Studio is functional and VM/android device is functional
   - Select android device or VM device and run app.
 
 
-## Practice 1: Understanding Android studio
+## Practice 1: Understanding Android studio and basic Kotlin syntax
 * Quick review over basic syntax and making sure that android studio is fully functional
 * https://www.youtube.com/watch?v=SXLmr4Qp4OM
 * Skip as needed. First 3 hours is roughly syntax of kotlin which is relatively similar to Java
@@ -52,4 +52,19 @@ How to search and retrieve data from a table using simple query.
 # Creating the database on android
 * https://www.youtube.com/watch?v=VnabHcf0e3w
 * This is a short youtube video that demonstrates how a simple database can be created using SQLITE.
+
+
+# Practice 3: Mutli Activities
+What is an acitivity, and how to create a new activity.
+How to call or switch between activities
+
+# Practice 4: How to use existing packages, such as a barcode scanner
+Link: To what package was used, and a step by step to use it.
+
+# Assembling it all: Creating a simple app using the above practice
+1. Create a basic homepage with buttons to different activities
+2. Create the database that will be used to store information throughout the app
+3. Create a layout for each activity
+4. Connect the homepage button to corresponding activities
+
 
