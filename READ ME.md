@@ -52,6 +52,7 @@ How to search and retrieve data from a table using simple query.
 # Creating the database on android
 * https://www.youtube.com/watch?v=VnabHcf0e3w
 * This is a short youtube video that demonstrates how a simple database can be created using SQLITE.
+*** Make sure that you do not change the name of the kotlin file "MyDBHelper.kt"
 
 
 # Practice 3: Mutli Activities
