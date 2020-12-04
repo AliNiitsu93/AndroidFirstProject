@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class MyDBHelper (context: Context): SQLiteOpenHelper(context, "ReceiptCart", null, 1 ) {
+class MyDBHelper (context: Context): SQLiteOpenHelper(context, "USERDB", null, 1 ) {
     override fun onCreate(db: SQLiteDatabase?) {
         //CREATE A TABLE WHERE primary key will be product barcode
         db?.execSQL("CREATE TABLE IF NOT EXISTS PRODUCT(P_BARCODE TEXT PRIMARY KEY , DESCRIPTION TEXT)")

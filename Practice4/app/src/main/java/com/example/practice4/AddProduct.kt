@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_product.*
+import kotlinx.android.synthetic.main.activity_shopping_cart.*
 
 class AddProduct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,5 +34,10 @@ class AddProduct : AppCompatActivity() {
             txtPbarcode.setText("")
             txtPdescription.setText("")
         }
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BarcodeScan::class.java)
+            startActivity(intent)
+        }
+
     }
 }
