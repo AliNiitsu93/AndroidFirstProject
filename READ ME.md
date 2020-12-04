@@ -60,7 +60,11 @@ What is an acitivity, and how to create a new activity.
 How to call or switch between activities
 
 # Practice 4: How to use existing packages, such as a barcode scanner
+https://www.tutorialspoint.com/barcode-scanning-in-android-using-kotlin
 Link: To what package was used, and a step by step to use it.
+
+# Practice 5: Passing results between activities
+https://www.youtube.com/watch?v=AD5qt7xoUU8
 
 # Assembling it all: Creating a simple app using the above practice
 1. Create a basic homepage with buttons to different activities
