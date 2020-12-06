@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         title = "RememberAll App"
+        var helper = MyDBHelper(applicationContext)
+        var db = helper.readableDatabase
 
 
 
@@ -24,10 +26,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-
-        //go to activity LookUp. Get back search result
+        //Get back search result and fill it in main page center as a list view
         btnLookup.setOnClickListener {
             val intentIntegrator = IntentIntegrator(this@MainActivity)
             intentIntegrator.setBeepEnabled(true)
@@ -44,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             exitProcess(0)
         }
     }
+
+    //Camera Functionality
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
@@ -66,4 +67,24 @@ class MainActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    fun dataToArray(): MutableList<String> {
+        var helper = MyDBHelper(applicationContext)
+        var db = helper.writableDatabase
+
+        //Change search area in this.
+        val list = mutableListOf<String>()
+        var cursor = db.rawQuery("SELECT P_BARCODE FROM PRODUCT",null)
+        var result = ""
+        var rows = cursor.getCount()
+        for (i in 1..rows){
+            if (cursor.moveToNext())
+                println("..................................................")
+            result = cursor.getString(cursor.getColumnIndex("PRODUCT.P_BARCODE"))
+            list.add(result)
+        }
+
+        return list
+    }
+
 }
