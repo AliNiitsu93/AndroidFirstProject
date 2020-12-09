@@ -2,22 +2,17 @@ package com.example.practice5
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.SyncStateContract.Helpers.insert
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.zxing.integration.android.IntentIntegrator
@@ -38,6 +33,8 @@ class Cart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+        var helper = MyDBHelper(applicationContext)
+
 
 //        if (cursor.moveToFirst()){ result = cursor.getString(cursor.getColumnIndex("PRODUCT.P_BARCODE")) }
 
@@ -49,8 +46,11 @@ class Cart : AppCompatActivity() {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-        //val d = String.format("%s-%s-%s",month,day,year)
-        //val date = LocalDate.parse(d, DateTimeFormatter.ISO_DATE)
+
+
+//        val d = String.format("%s-%s-%s",month,day,year)
+//        val date = LocalDate.parse(d, DateTimeFormatter.ISO_DATE)
+
         editDate.setText(String.format("%s-%s-%s",month,day,year))
 
 
@@ -110,33 +110,75 @@ class Cart : AppCompatActivity() {
             finish()
         }
 
-        btnFinish.setOnClickListener {
+        btnReceipt.setOnClickListener {
             //Take a picture of barcode and save it
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 //On click, go first to camera to take a picture of receipt barcode
                 if (checkSelfPermission(Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
+                    == PackageManager.PERMISSION_DENIED
+                ) {
                     //Permission was not enabled
-                    val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    val permission = arrayOf(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
                     //show popup to request permission
-                    requestPermissions(permission,PERMISSION_CODE)
-                }
-                else{
+                    requestPermissions(permission, PERMISSION_CODE)
+                } else {
                     //Permission already granted
                     openCamera()
                 }
-            }
-            else{
+            } else {
                 openCamera()
             }
+        }
+        btnDone.setOnClickListener {
+            //data repository in write mode
+            var db = helper.writableDatabase
+
+            //Store into DATABASE___________________
+            //Date as String
+            var store = txtStore.text.toString()
+            val date = String.format("%s-%s-%s",month,day,year)
 
 
-            //Store into DATABASE
+            if (store.isNullOrEmpty()){
+                store = "Default Store"}
+
+            var cv = ContentValues()
+            cv.put("ODATE", date)
+            cv.put("STORE_NAME",store)
+
+            db.insert("ORDERS",null,cv)
+            //db?.execSQL("INSERT INTO ORDERS(DATE, STORE_NAME) VALUES($date, $store)")
+
+
+            //
+            //for each item in my MyApplication.cartList, place it on its own line
+            //addProduct(barcode)
+            //
+            //        db?.execSQL("INSERT INTO PRODUCT(P_BARCODE, DESCRIPTION) VALUES('09661975680','Kirkland 500ml Purified Water')")
+
+
+            //        db?.execSQL("CREATE TABLE IF NOT EXISTS ORDERS(ORDER_ID INTEGER PRIMARY KEY AUTOINCREMENT, TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP, DATE TEXT, STORE_NAME TEXT)")
+
+
+//            MyApplication.cartList = mutableListOf<String>()
+//            finish()
+
+
+
         }
 
     }
+
+    fun addProduct(barcode: String){
+        //if this barcode does not exist in PRODUCT, add it in with default text = Store + Date
+
+    }
+
     private fun openCamera() {
         val values = ContentValues()
         values.put(MediaStore.Images.Media.TITLE, "New Picture")
@@ -171,11 +213,12 @@ class Cart : AppCompatActivity() {
     //When the camera is activated, it will look for a result  which can be handled in this code below
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_CAPTURE_CODE) {
+
             //set image capture to image view
             image_view.setImageURI(image_rui)
+
         }
         else {
-            println("I'M IN EELLLLLSEEE RESULT_________________________________________________________")
 
             //result is the data received from IntentIntegrator (camera)
             val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)

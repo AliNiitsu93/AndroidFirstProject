@@ -14,7 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Just a title for the app
         title = "RememberAll App"
+
+        //initiate database
         var helper = MyDBHelper(applicationContext)
         var db = helper.readableDatabase
 
@@ -27,9 +30,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Get back search result and fill it in main page center as a list view
+        //The code below only calls the camera to scan the barcode, but the actual search query
+        //will be down below under onActivityResult
         btnLookup.setOnClickListener {
             val intentIntegrator = IntentIntegrator(this@MainActivity)
-            intentIntegrator.setBeepEnabled(true)
+            //if you wish for sound, change to true
+            intentIntegrator.setBeepEnabled(false)
             intentIntegrator.setCameraId(0)
             intentIntegrator.setPrompt("SCAN")
             intentIntegrator.setOrientationLocked(false)
@@ -42,14 +48,14 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity.finish()
             exitProcess(0)
         }
+
+
+        //Create a button to another activity, that will update Product if it exists, and add if it doesn't
+        //Items searched will appear with a description which is either Default, or what was entered by user above.
     }
 
     //Camera Functionality
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             if (result.contents == null) {
@@ -60,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                     .show()
 
                 //Here we will create a way to query and search database for the barcode scanned
+
                 txtViewResult.text = String.format("Scanned Result: %s", result.contents)
 
             }
@@ -68,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //a function that would take all items in a database and place in an array
     fun dataToArray(): MutableList<String> {
         var helper = MyDBHelper(applicationContext)
         var db = helper.writableDatabase

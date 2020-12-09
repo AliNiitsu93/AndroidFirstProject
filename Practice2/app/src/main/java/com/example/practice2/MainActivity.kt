@@ -30,4 +30,4 @@ class MainActivity : AppCompatActivity() {
             addPassword.setText("")
             addEmail.requestFocus()
         }
-    }CHI009AJ
+    }

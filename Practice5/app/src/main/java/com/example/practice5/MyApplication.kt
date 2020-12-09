@@ -5,6 +5,8 @@ import android.app.Application
 class MyApplication: Application() {
     companion object {
         var globalVar = 2
+        var date = ""
+        var store = ""
         var cartList = mutableListOf<String>()
 
     }
