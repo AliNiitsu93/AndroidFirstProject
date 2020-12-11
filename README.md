@@ -76,3 +76,7 @@ Create a basic homepage with buttons to different activities
 Create the database that will be used to store information throughout the app
 Create a layout for each activity
 Connect the homepage button to corresponding activities
+
+## To Do
+- understand bitmap to store photo capture into database to pull back up and display in Image-View on main page look up feature.
+- Use internet search option to look up barcode to find product description and store it in database.
