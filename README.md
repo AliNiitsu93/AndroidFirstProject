@@ -6,7 +6,7 @@ Creating a step by step guide for android development for people with programmin
 Showing how an idea is broken down into steps, and then utilizing existing guides to build it into a functioning app.
 Breakdown:
 Pre-Requisite: Learning how to utilize basic features of android studio
--installation process for android studio.
+- installation process for android studio.
 
 Install latest android studio
 When you run android studio, it will ask for sdk location. Ignore it and close out of window.
@@ -17,6 +17,8 @@ Make sure Android SDK, API ## is selected and click next
 
 https://codelabs.developers.google.com/codelabs/android-training-hello-world/index.html?index=..%2F..%2Fandroid-training#0 a. Test whether Android Studio is functional and VM/android device is functional via the "Hello World" first app.
 New Project - Empty Activity - Name: Hello World - Minimum SDK: API 15 - Finish
+** Use minimum API higher (OREO) so that you can use some common features like datatime.
+
 Select android device or VM device and run app.
 Practice 1: Understanding Android studio and basic Kotlin syntax
 Quick review over basic syntax and making sure that android studio is fully functional
@@ -52,14 +54,22 @@ STUFF about simple structure. What is primary key. What is foreign key. How a si
 Creating the database on android
 https://www.youtube.com/watch?v=VnabHcf0e3w
 This is a short youtube video that demonstrates how a simple database can be created using SQLITE. *** Make sure that you do not change the name of the kotlin file "MyDBHelper.kt"
+- Make sure that your kotlin file name for your database matches the class name inside it. This is very similar to how Java works as well.
+
+
 Practice 3: Mutli Activities
 What is an acitivity, and how to create a new activity. How to call or switch between activities
 
 Practice 4: How to use existing packages, such as a barcode scanner
 https://www.tutorialspoint.com/barcode-scanning-in-android-using-kotlin Link: To what package was used, and a step by step to use it.
+This is a fairly simple implementation of a camera barcode scanner that allows the programmar more freedom to customize it.
+PS. We need to set the orientation differently so that we can have the scanner read vertically rather than horizontally.
 
 Practice 5: Passing results between activities
 https://www.youtube.com/watch?v=AD5qt7xoUU8
+https://developer.android.com/training/basics/intents/result
+The documentation is quite simple to follow, combined with Practice4, zxing uses onActivityResult(), so it is relatively easy to follow and have data sent between two activities for use. 
+Worst case Scenario. Easy to set up a few Global Variables using the Companion Object feature in kotlin.
 
 Assembling it all: Creating a simple app using the above practice
 Create a basic homepage with buttons to different activities
